@@ -1,0 +1,90 @@
+.toast{
+    font-family: "Montserrat", sans-serif;
+    position: fixed;
+    top: 30px;
+    right: 30px;
+    border-radius: 12px;
+    background-color: var(--color-secondary);
+    padding: 20px 35px 20px 25px;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+    border-left: 6px solid var(--color-primary);
+    overflow: hidden;
+    transform: translateX(calc(100% + 30px));
+    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.35);
+}
+
+.toast.active{
+    transform: translateX(0%);
+}
+
+.toast .toast__conteudo {
+    display: flex;
+    align-items: center;
+}
+
+.toast__conteudo .check {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 30px;
+    width: 30px;
+    background-color: var(--color-primary);
+    color: var(--color-secondary);
+    border-radius: 50%;
+    font-size: 15px;
+}
+
+.toast .toast__mensagem {
+    display: flex;
+    flex-direction: column;
+    margin: 0 20px;
+    gap: 4px;
+    font-size: 1.5rem;
+    font-weight: 400;
+}
+
+.toast__mensagem--titulo {
+    font-weight: 700;
+}
+
+.toast .close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 5px;
+    cursor: pointer;
+    opacity: 0.7;
+}
+
+.toast .close:hover {
+    opacity: 1;
+}
+
+.toast .toast__progresso {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 3px;
+    width: 100%;
+    background: #ddd;
+}
+
+.toast .toast__progresso::before{
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    background: var(--color-primary);
+}
+
+.toast__progresso.active::before{
+    animation: toast__progresso 5s linear forwards;
+}
+
+@keyframes toast__progresso {
+    100%{
+        right: 100%;
+    }
+}
